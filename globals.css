@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+* {
+  border-color: theme("colors.line");
+}
+
+html,
+body {
+  background: theme("colors.base");
+  color: theme("colors.ink.DEFAULT");
+  font-family: var(--font-body);
+}
+
+::selection {
+  background: theme("colors.brass.DEFAULT");
+  color: theme("colors.base");
+}
+
+/* Visible keyboard focus, everywhere */
+:focus-visible {
+  outline: 2px solid theme("colors.cyan.DEFAULT");
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.label-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: theme("colors.ink.faint");
+}
+
+.panel {
+  background: theme("colors.panel");
+  border: 1px solid theme("colors.line");
+  border-radius: theme("borderRadius.panel");
+}
+
+.control-input {
+  background: theme("colors.raised");
+  border: 1px solid theme("colors.line");
+  border-radius: 10px;
+  color: theme("colors.ink.DEFAULT");
+  transition: border-color 0.15s ease;
+}
+.control-input:focus {
+  border-color: theme("colors.cyan.DEFAULT");
+}
+
+/* Aperture iris — the signature mark. Blades formed with conic-gradient
+   wedges that rotate; used as brand mark and as the generation-loading
+   indicator so the "shutter" mechanic ties the whole product together. */
+.iris {
+  position: relative;
+  border-radius: 9999px;
+  background:
+    repeating-conic-gradient(
+      theme("colors.brass.DEFAULT") 0deg 40deg,
+      transparent 40deg 60deg
+    );
+}
+.iris::after {
+  content: "";
+  position: absolute;
+  inset: 28%;
+  border-radius: 9999px;
+  background: theme("colors.base");
+}
